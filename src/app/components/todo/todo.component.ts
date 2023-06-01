@@ -26,6 +26,8 @@ export class TodoComponent implements OnInit {
   }
 
   complete(activity: ToDo) {
-    activity.completed = true;
+    setTimeout(() => {
+      activity.completed = true;
+    }, 2000)
   }
 }

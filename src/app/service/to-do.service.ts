@@ -17,7 +17,8 @@ export class ToDoService {
   }
   updatelist(title: string) {
     this.i++;
-    this.toDoList.push({id: this.i, title, completed: false});
-
+    setTimeout(() => {
+      this.toDoList.push({id: this.i, title, completed: false})
+    }, 2000)
   }
 }
