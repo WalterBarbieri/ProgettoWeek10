@@ -1,0 +1,22 @@
+.container {
+  background: linear-gradient(90deg, #9E9E9E, white);
+}
+input {
+  background: linear-gradient(90deg, transparent, #9E9E9E);
+  border: 1px solid white ;
+  color: white;
+
+}
+input::placeholder {
+  color: white;
+}
+#addBtn {
+  background-color: #9E9E9E;
+  border: 1px solid white ;
+}
+
+#doneBtn {
+  background-color: #9E9E9E;
+  border: none;
+  padding: 2px 5px;
+}

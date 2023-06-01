@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center" *ngFor="let activity of toDoList">
+  <ul class="d-flex" *ngIf="!activity.completed">
+    <li class="me-2">{{activity.title}}</li>
+    <button type="button" class="d-flex align-items-center" id="doneBtn" (click)="complete(activity)">
+      <img src="../../../assets/check-lg.svg" alt="check icon">
+    </button>
+  </ul>
+</div>
+
+<form class="container d-flex justify-content-center form-control border-0" >
+<input type="text" placeholder="Attività" class="me-1" [(ngModel)]="title" name="myActivity">
+<button type="button" class="d-flex align-items-center" id="addBtn" (click)="newTask(title)">
+  <img src="../../../assets/plus-lg.svg" alt="plus icon">
+
+</button>
+</form>
+
