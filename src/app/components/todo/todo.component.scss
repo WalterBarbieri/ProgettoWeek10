@@ -18,11 +18,20 @@ input::placeholder {
 #addBtn:disabled {
   background-color: #c5c4c4;
 }
+#addBtn:hover {
+  box-shadow: 1px 1px 5px 1px black;
+}
+#addBtn:disabled:hover {
+  box-shadow: none;
+}
 
 #doneBtn {
   background-color: #9E9E9E;
   border: none;
   padding: 4px 5px;
+}
+#doneBtn:hover {
+  box-shadow: 1px 1px 5px 1px black;
 }
 li {
   font-size: 1.2em;
@@ -33,6 +42,9 @@ li {
   border: none;
   padding: 4px 5px;
 }
+#removeBtn:hover {
+  box-shadow: 1px 1px 5px 1px black;
+}
 
 #toDoListContainer {
   width: 50%;
@@ -42,5 +54,8 @@ li {
   width: 100%;
   justify-content: end;
   display: flex;
+}
+ul {
+  border-bottom: 1px solid #9E9E9E;
 }
 

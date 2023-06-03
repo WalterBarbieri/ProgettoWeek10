@@ -6,15 +6,23 @@
 }
 li {
   font-size: 1.2em;
+  border-bottom: 1px solid #9E9E9E;
 }
 #removeBtn  {
   background-color: #9E9E9E;
   border: none;
   padding: 4px 5px;
 }
+#removeBtn:hover {
+  box-shadow: 2px 2px 5px 2px black;
+}
 #backBtn  {
   background-color: #9E9E9E;
   border: none;
   padding: 4px 5px;
 }
+#backBtn:hover {
+  box-shadow: 2px 2px 5px 2px black;
+}
+
 
