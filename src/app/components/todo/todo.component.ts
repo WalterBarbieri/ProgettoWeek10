@@ -17,6 +17,8 @@ export class TodoComponent implements OnInit {
 
   toDoList: ToDo[] = [];
 
+  removing = false;
+
   constructor(private toDoSrv: ToDoService) { }
 
   ngOnInit(): void {
@@ -43,10 +45,29 @@ export class TodoComponent implements OnInit {
   }
 
   complete(activity: ToDo) {
+    if (this.removing) {
+      return;
+    }
+    this.removing = true;
     activity.completeloading = true;
     setTimeout(() => {
       activity.completed = true;
       activity.completeloading = false;
+      this.removing = false;
+    }, 2000)
+  }
+
+  remove(activity: ToDo) {
+    if (this.removing) {
+      return;
+    }
+    this.removing = true;
+    activity.removeloading = true;
+    const index = this.toDoList.indexOf(activity);
+    setTimeout(() => {
+      this.toDoList.splice(index, 1);
+      activity.removeloading = false;
+      this.removing = false;
     }, 2000)
   }
 }

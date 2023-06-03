@@ -15,6 +15,8 @@ export class CompletatiComponent implements OnInit {
 
   completedList: ToDo[] = [];
 
+  removing = false;
+
   constructor(private toDoSrv: ToDoService) { }
 
   ngOnInit(): void {
@@ -25,4 +27,38 @@ export class CompletatiComponent implements OnInit {
     }, 2000);
   }
 
+  back(activity: ToDo) {
+    if (this.removing) {
+      return;
+    }
+    this.removing = true;
+    activity.completeloading = true;
+    setTimeout(() => {
+      activity.completed = false;
+      activity.completeloading = false;
+      this.removing = false;
+      this.refreshLists();
+    }, 2000)
+  }
+
+  remove(activity: ToDo) {
+    if (this.removing) {
+      return;
+    }
+    this.removing = true;
+    activity.removeloading = true;
+    const index = this.toDoList.indexOf(activity);
+    const index2 = this.completedList.indexOf(activity);
+    setTimeout(() => {
+      this.toDoList.splice(index, 1);
+      this.completedList.splice(index2, 1);
+      activity.removeloading = false;
+      this.removing = false;
+    }, 2000)
+  }
+
+  private refreshLists() {
+    this.toDoList = this.toDoSrv.getList();
+    this.completedList = this.toDoList.filter((activity) => activity.completed);
+  }
 }

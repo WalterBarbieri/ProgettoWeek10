@@ -3,4 +3,5 @@ export interface ToDo {
   title: string;
   completed: boolean
   completeloading: boolean;
+  removeloading: boolean;
 }

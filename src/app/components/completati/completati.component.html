@@ -1,11 +1,21 @@
 <div *ngIf="!isLoading; else loading">
   <div class="d-flex justify-content-center" *ngIf="completedList.length > 0">
     <ul class="d-flex flex-column">
-      <li *ngFor="let activity of completedList" class="me-2 d-flex align-items-center">
+      <li *ngFor="let activity of completedList" class="me-2 d-flex align-items-center justify-content-end">
         <span>{{ activity.title }}</span>
-        <button type="button" class="d-flex align-items-center ms-2" id="doneBtn">
+        <button type="button" class="d-flex align-items-center ms-2 me-2" id="doneBtn">
           <img src="../../../assets/check-lg.svg" alt="check icon">
         </button>
+        <button type="button" class="d-flex align-items-center me-2" id="backBtn" (click)="back(activity)" >
+          <img src="../../../assets/arrow-90deg-left.svg" alt="backarrow icon">
+        </button>
+        <button type="button" class="d-flex align-items-center me-4" id="removeBtn" (click)="remove(activity)">
+          <img src="../../../assets/x-lg.svg" alt="x icon">
+        </button>
+        <div class="spinner-grow" role="status" style="color: #9E9E9E" *ngIf="activity.completeloading">
+        </div>
+        <div class="spinner-grow" role="status" style="color: #9E9E9E" *ngIf="activity.removeloading">
+        </div>
       </li>
     </ul>
   </div>

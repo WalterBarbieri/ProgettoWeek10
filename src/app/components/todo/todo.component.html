@@ -1,12 +1,17 @@
 <div *ngIf="!isLoading; else loading">
-  <div class="d-flex justify-content-center flex-column align-items-center" *ngIf="toDoList.length > 0">
-    <div *ngFor="let activity of toDoList">
+  <div class="d-flex justify-content-center flex-column align-items-center" id="toDoListContainer" *ngIf="toDoList.length > 0">
+    <div *ngFor="let activity of toDoList" id="toDoItemContainer">
       <ul class="d-flex align-items-center" *ngIf="!activity.completed">
         <li class="me-2 d-flex">{{activity.title}}</li>
         <button type="button" class="d-flex align-items-center me-4" id="doneBtn" (click)="complete(activity)">
           <img src="../../../assets/check-lg.svg" alt="check icon">
         </button>
+        <button type="button" class="d-flex align-items-center me-4" id="removeBtn" (click)="remove(activity)">
+          <img src="../../../assets/x-lg.svg" alt="x icon">
+        </button>
         <div class="spinner-grow" role="status" style="color: #9E9E9E" *ngIf="activity.completeloading">
+        </div>
+        <div class="spinner-grow" role="status" style="color: #9E9E9E" *ngIf="activity.removeloading">
         </div>
       </ul>
     </div>

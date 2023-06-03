@@ -28,3 +28,19 @@ li {
   font-size: 1.2em;
 }
 
+#removeBtn  {
+  background-color: #9E9E9E;
+  border: none;
+  padding: 4px 5px;
+}
+
+#toDoListContainer {
+  width: 50%;
+  margin-left: 9em;
+}
+#toDoItemContainer {
+  width: 100%;
+  justify-content: end;
+  display: flex;
+}
+
