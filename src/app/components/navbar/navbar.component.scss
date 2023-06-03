@@ -3,3 +3,13 @@ nav {
   background: linear-gradient(90deg, #9E9E9E, white);
   border-radius: 5px;
 }
+a {
+  font-size: 1.5em;
+}
+.navbar-nav .nav-link {
+  color: gray;
+}
+
+.navbar-nav .nav-link.active {
+  color: purple;
+}

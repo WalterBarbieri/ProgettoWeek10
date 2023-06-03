@@ -13,10 +13,18 @@ input::placeholder {
 #addBtn {
   background-color: #9E9E9E;
   border: 1px solid white ;
+  padding: 6px 9px;
+}
+#addBtn:disabled {
+  background-color: #c5c4c4;
 }
 
 #doneBtn {
   background-color: #9E9E9E;
   border: none;
-  padding: 2px 5px;
+  padding: 4px 5px;
 }
+li {
+  font-size: 1.2em;
+}
+

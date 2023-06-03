@@ -9,6 +9,10 @@ import { ToDoService } from 'src/app/service/to-do.service';
 })
 export class TodoComponent implements OnInit {
 
+  isLoading = true;
+
+  addLoading = false;
+
   title: string = '';
 
   toDoList: ToDo[] = [];
@@ -17,17 +21,32 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.toDoList = this.toDoSrv.getList();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000)
   }
 
+  isInputEmpty(): boolean {
+    return this.title.trim().length === 0;
+  }
+
+
   newTask(title: string) {
+    this.addLoading = true;
     this.toDoSrv.updatelist(title);
     console.log(this.toDoList);
+    setTimeout(() => {
+      this.addLoading = false;
+      this.title = '';
+  }, 2000)
 
   }
 
   complete(activity: ToDo) {
+    activity.completeloading = true;
     setTimeout(() => {
       activity.completed = true;
+      activity.completeloading = false;
     }, 2000)
   }
 }

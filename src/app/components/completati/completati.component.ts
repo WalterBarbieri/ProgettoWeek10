@@ -9,12 +9,20 @@ import { ToDoService } from 'src/app/service/to-do.service';
 })
 export class CompletatiComponent implements OnInit {
 
+  isLoading = true;
+
   toDoList: ToDo[] = [];
+
+  completedList: ToDo[] = [];
 
   constructor(private toDoSrv: ToDoService) { }
 
   ngOnInit(): void {
     this.toDoList = this.toDoSrv.getList();
+    this.completedList = this.toDoList.filter((activity) => activity.completed);
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
   }
 
 }

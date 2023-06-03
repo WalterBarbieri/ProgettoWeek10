@@ -6,10 +6,10 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav text-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Todo</a>
+          <a class="nav-link active:not()" aria-current="page" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Todo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/completati']">Completati</a>
+          <a class="nav-link active:not()" [routerLink]="['/completati']" routerLinkActive="active">Completati</a>
         </li>
       </ul>
     </div>

@@ -1,17 +1,35 @@
-<div class="d-flex justify-content-center" *ngFor="let activity of toDoList">
-  <ul class="d-flex" *ngIf="!activity.completed">
-    <li class="me-2">{{activity.title}}</li>
-    <button type="button" class="d-flex align-items-center" id="doneBtn" (click)="complete(activity)">
-      <img src="../../../assets/check-lg.svg" alt="check icon">
+<div *ngIf="!isLoading; else loading">
+  <div class="d-flex justify-content-center flex-column align-items-center" *ngIf="toDoList.length > 0">
+    <div *ngFor="let activity of toDoList">
+      <ul class="d-flex align-items-center" *ngIf="!activity.completed">
+        <li class="me-2 d-flex">{{activity.title}}</li>
+        <button type="button" class="d-flex align-items-center me-4" id="doneBtn" (click)="complete(activity)">
+          <img src="../../../assets/check-lg.svg" alt="check icon">
+        </button>
+        <div class="spinner-grow" role="status" style="color: #9E9E9E" *ngIf="activity.completeloading">
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="toDoList.length == 0">
+    <p>Oops, non ci sono Task</p>
+  </div>
+
+  <form class="container d-flex justify-content-center form-control border-0">
+    <input type="text" placeholder="Attività" class="me-1 fs-5" [(ngModel)]="title" name="myActivity">
+    <button type="button" class="d-flex align-items-center me-4" id="addBtn" (click)="newTask(title)" [disabled]="isInputEmpty()">
+      <img src="../../../assets/plus-lg.svg" alt="plus icon">
+
     </button>
-  </ul>
+    <div class="spinner-grow" role="status" style="color: #9E9E9E" *ngIf="addLoading">
+    </div>
+  </form>
 </div>
 
-<form class="container d-flex justify-content-center form-control border-0" >
-<input type="text" placeholder="Attività" class="me-1" [(ngModel)]="title" name="myActivity">
-<button type="button" class="d-flex align-items-center" id="addBtn" (click)="newTask(title)">
-  <img src="../../../assets/plus-lg.svg" alt="plus icon">
-
-</button>
-</form>
-
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <p class="me-4">Recupero Tasks...</p>
+    <div class="spinner-grow" role="status" style="color: #9E9E9E">
+    </div>
+  </div>
+</ng-template>
