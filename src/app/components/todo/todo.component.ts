@@ -17,7 +17,7 @@ export class TodoComponent implements OnInit {
 
   toDoList: ToDo[] = [];
 
-  removing = false;
+  onLoading = false;
 
   constructor(private toDoSrv: ToDoService) { }
 
@@ -45,29 +45,34 @@ export class TodoComponent implements OnInit {
   }
 
   complete(activity: ToDo) {
-    if (this.removing) {
+    if (this.onLoading) {
       return;
     }
-    this.removing = true;
+    this.onLoading = true;
     activity.completeloading = true;
     setTimeout(() => {
       activity.completed = true;
       activity.completeloading = false;
-      this.removing = false;
+      this.onLoading = false;
     }, 2000)
   }
 
   remove(activity: ToDo) {
-    if (this.removing) {
+    if (this.onLoading) {
       return;
     }
-    this.removing = true;
+    this.onLoading = true;
     activity.removeloading = true;
     const index = this.toDoList.indexOf(activity);
     setTimeout(() => {
       this.toDoList.splice(index, 1);
       activity.removeloading = false;
-      this.removing = false;
+      this.onLoading = false;
     }, 2000)
   }
+
+  checkComplete(): boolean {
+    return this.toDoList.every(element => element.completed == true)
+  }
+
 }
